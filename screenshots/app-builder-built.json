@@ -1,0 +1,38 @@
+{
+  "url": "http://127.0.0.1:8081/",
+  "viewports": {
+    "desktop": {
+      "width": 1280,
+      "height": 800,
+      "status": 200,
+      "title": "SHADOW",
+      "hasCanvas": false,
+      "bodyTextLen": 1877,
+      "bodyTextHash": "961917a559acf73d0aa365a9d51cf7190544af7d2f18d0d7d00ebf184ec0009d",
+      "bodyTextPrefix": "SHADOW About Expertise Stack Work Contact SHADOW Full Stack Deve",
+      "horizontalOverflow": false,
+      "consoleErrors": [],
+      "pageErrors": [],
+      "screenshot": "/workspace/screenshots/app-builder-built.png"
+    },
+    "mobile": {
+      "width": 390,
+      "height": 844,
+      "status": 200,
+      "title": "SHADOW",
+      "hasCanvas": false,
+      "bodyTextLen": 1842,
+      "bodyTextHash": "4608c7365d97d62d1c503bf231d81b56dbfe463201cab52308cad22bdd148daa",
+      "bodyTextPrefix": "SHADOW SHADOW Full Stack Developer and Digital Solutions Enginee",
+      "horizontalOverflow": false,
+      "consoleErrors": [],
+      "pageErrors": [],
+      "screenshot": "/workspace/screenshots/app-builder-built-mobile.png"
+    }
+  },
+  "brandWarnings": [],
+  "authWarnings": [],
+  "verdictFile": "/workspace/screenshots/app-builder-built.json",
+  "divergesFromBaseline": false,
+  "baselineReasons": []
+}

@@ -1,0 +1,36 @@
+{
+  "url": "http://127.0.0.1:8080/",
+  "viewports": {
+    "desktop": {
+      "width": 1280,
+      "height": 800,
+      "status": 200,
+      "title": "SHADOW",
+      "hasCanvas": false,
+      "bodyTextLen": 1728,
+      "bodyTextHash": "65cba1f74a4a36cd2d2307a7c369907e807ed5ef103b352cb2e768d3ea2640c2",
+      "bodyTextPrefix": "SHADOW About Automation Stack Work Contact Systems · Stores · Au",
+      "horizontalOverflow": false,
+      "consoleErrors": [],
+      "pageErrors": [],
+      "screenshot": "/workspace/screenshots/app-builder-preview.png"
+    },
+    "mobile": {
+      "width": 390,
+      "height": 844,
+      "status": 200,
+      "title": "SHADOW",
+      "hasCanvas": false,
+      "bodyTextLen": 1692,
+      "bodyTextHash": "03fb46d92eec0ac9b931fc6f45637fc8bae87bbce8a8bc25fab0a6afec2e2ade",
+      "bodyTextPrefix": "SHADOW Systems · Stores · Automation SHADOW Full Stack Developer",
+      "horizontalOverflow": false,
+      "consoleErrors": [],
+      "pageErrors": [],
+      "screenshot": "/workspace/screenshots/app-builder-preview-mobile.png"
+    }
+  },
+  "brandWarnings": [],
+  "authWarnings": [],
+  "verdictFile": "/workspace/screenshots/app-builder-preview.json"
+}

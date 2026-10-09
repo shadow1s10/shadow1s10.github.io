@@ -1,0 +1,35 @@
+@import "tailwindcss";
+
+@theme {
+  --color-bg: #050505;
+  --color-surface: #101010;
+  --color-fg: #f3f3f3;
+  --color-muted: #9b9b9b;
+  --color-primary: #ff1a3c;
+  --color-border: #2a1418;
+  --font-sans: "Manrope", ui-sans-serif, system-ui, sans-serif;
+  --font-display: "Orbitron", ui-sans-serif, system-ui, sans-serif;
+  --radius-card: 1rem;
+}
+
+@layer base {
+  html { scroll-behavior: smooth; }
+  body {
+    background: var(--color-bg);
+    color: var(--color-fg);
+    font-family: var(--font-sans);
+  }
+  button:not(:disabled),
+  [role="button"]:not(:disabled) { cursor: pointer; }
+  @media (prefers-reduced-motion: reduce) {
+    html { scroll-behavior: auto; }
+    .spin-slow, .pulse-line { animation: none !important; }
+  }
+}
+
+@keyframes spin-y {
+  to { transform: rotateY(360deg); }
+}
+@keyframes dash {
+  to { stroke-dashoffset: -48; }
+}
