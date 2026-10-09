@@ -174,20 +174,14 @@ function Home() {
             <div className="mt-7"><Social /></div>
           </div>
 
-          <div className="order-1 flex justify-center md:order-2" style={{ perspective: "900px" }}>
-            <div
-              className="relative"
-              style={{ transform: "rotateY(-18deg) rotateX(8deg)", transformStyle: "preserve-3d" }}
-            >
-              <div className="absolute -inset-6 rounded-full border border-primary/40" style={{ transform: "translateZ(-30px)" }} />
+          <div className="order-1 flex justify-center md:order-2" style={{ perspective: "1100px" }}>
+            <div className="float-card relative">
+              <div className="orbit absolute -inset-10 rounded-full border border-primary/70" />
+              <div className="absolute -inset-16 rounded-full border border-primary/30" style={{ transform: "rotateX(72deg)" }} />
               <img
                 src="/shadow.jpg"
                 alt="SHADOW"
-                className="relative size-56 rounded-3xl border border-primary object-cover object-top shadow-[0_30px_60px_rgba(255,26,60,0.28)] md:size-72"
-              />
-              <div
-                className="absolute -bottom-4 left-6 right-6 h-8 rounded-full bg-primary/30 blur-xl"
-                style={{ transform: "translateZ(-40px) rotateX(70deg)" }}
+                className="relative z-10 size-56 rounded-3xl border border-primary object-cover object-top shadow-[0_40px_80px_rgba(255,26,60,0.35)] md:size-72"
               />
             </div>
           </div>
@@ -209,18 +203,23 @@ function Home() {
         <section id="flow" className="mx-auto max-w-5xl px-5 py-12">
           <h2 className="font-display text-2xl tracking-widest">Automation</h2>
           <p className="mt-3 max-w-xl text-sm text-muted">One pipeline. The order does not wait for someone to copy it by hand.</p>
-          <div className="mt-8 grid gap-4 md:grid-cols-4" style={{ perspective: "1000px" }}>
-            {flow.map(([num, title, text], i) => (
-              <article
-                key={num}
-                className="rounded-card border border-border bg-surface p-5 shadow-[0_18px_40px_rgba(0,0,0,0.45)]"
-                style={{ transform: `rotateX(8deg) translateY(${i % 2 ? "12px" : "0"})` }}
-              >
-                <p className="font-display text-xs text-primary">{num}</p>
-                <h3 className="mt-3 font-semibold">{title}</h3>
-                <p className="mt-2 text-sm leading-relaxed text-muted">{text}</p>
-              </article>
-            ))}
+          <div className="relative mt-8">
+            <div className="absolute left-6 right-6 top-8 hidden h-0.5 bg-primary/40 md:block">
+              <span className="packet absolute top-1/2 size-3.5 -translate-y-1/2 rounded-full bg-primary shadow-[0_0_18px_#ff1a3c]" />
+            </div>
+            <div className="grid gap-4 md:grid-cols-4" style={{ perspective: "1200px" }}>
+              {flow.map(([num, title, text], i) => (
+                <article
+                  key={num}
+                  className="node rounded-card border border-border bg-surface p-5"
+                  style={{ animationDelay: `${i * 0.7}s`, transform: "rotateX(14deg)" }}
+                >
+                  <p className="font-display text-xs text-primary">{num}</p>
+                  <h3 className="mt-3 font-semibold">{title}</h3>
+                  <p className="mt-2 text-sm leading-relaxed text-muted">{text}</p>
+                </article>
+              ))}
+            </div>
           </div>
         </section>
 

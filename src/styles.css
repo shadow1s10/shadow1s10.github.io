@@ -23,13 +23,39 @@
   [role="button"]:not(:disabled) { cursor: pointer; }
   @media (prefers-reduced-motion: reduce) {
     html { scroll-behavior: auto; }
-    .spin-slow, .pulse-line { animation: none !important; }
+    .float-card, .orbit, .packet, .node { animation: none !important; }
   }
 }
 
-@keyframes spin-y {
-  to { transform: rotateY(360deg); }
+.float-card {
+  animation: floaty 6s ease-in-out infinite;
+  transform-style: preserve-3d;
 }
-@keyframes dash {
-  to { stroke-dashoffset: -48; }
+.orbit {
+  animation: orbit 7s linear infinite;
+  transform-style: preserve-3d;
+}
+.packet {
+  animation: travel 2.8s linear infinite;
+}
+.node {
+  animation: pulse-node 2.8s ease-in-out infinite;
+}
+@keyframes floaty {
+  0%, 100% { transform: rotateY(-24deg) rotateX(12deg) translateY(0); }
+  50% { transform: rotateY(18deg) rotateX(2deg) translateY(-16px); }
+}
+@keyframes orbit {
+  from { transform: rotateX(72deg) rotateZ(0deg); }
+  to { transform: rotateX(72deg) rotateZ(360deg); }
+}
+@keyframes travel {
+  0% { left: 0; opacity: 0; }
+  8% { opacity: 1; }
+  92% { opacity: 1; }
+  100% { left: calc(100% - 14px); opacity: 0; }
+}
+@keyframes pulse-node {
+  0%, 100% { box-shadow: 0 16px 30px rgba(0, 0, 0, 0.4); }
+  40% { box-shadow: 0 0 0 1px rgba(255, 26, 60, 0.8), 0 18px 40px rgba(255, 26, 60, 0.25); }
 }
