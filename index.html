@@ -1,0 +1,192 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>SHADOW</title>
+  <link href="https://fonts.googleapis.com/css2?family=Manrope:wght@400;600;700&family=Orbitron:wght@700;800&display=swap" rel="stylesheet" />
+  <style>
+    :root { --bg:#050505; --surface:#101010; --fg:#f3f3f3; --muted:#9b9b9b; --red:#ff1a3c; --border:#2a1418; }
+    * { box-sizing: border-box; margin: 0; padding: 0; }
+    body { background: var(--bg); color: var(--fg); font-family: Manrope, sans-serif; line-height: 1.65; overflow-x: hidden; }
+    a { color: inherit; text-decoration: none; }
+    .gridbg { position: fixed; inset: 0; pointer-events: none; opacity: .35; background-image: linear-gradient(rgba(255,26,60,.08) 1px, transparent 1px), linear-gradient(90deg, rgba(255,26,60,.08) 1px, transparent 1px); background-size: 48px 48px; transform: perspective(600px) rotateX(62deg) translateY(-18%); transform-origin: center top; }
+    header { position: sticky; top: 0; z-index: 5; background: rgba(5,5,5,.92); border-bottom: 1px solid var(--border); backdrop-filter: blur(12px); }
+    .wrap { max-width: 960px; margin: 0 auto; padding: 0 20px; position: relative; }
+    .bar { display: flex; justify-content: space-between; align-items: center; min-height: 64px; }
+    .mark, h1, h2 { font-family: Orbitron, sans-serif; }
+    .mark { letter-spacing: .28em; color: var(--red); font-size: 14px; }
+    nav { display: flex; gap: 22px; }
+    nav a { color: var(--muted); font-size: 14px; }
+    .hero { display: grid; gap: 36px; align-items: center; padding: 64px 0 20px; }
+    .kicker { color: var(--red); font-weight: 700; font-size: 14px; }
+    h1 { letter-spacing: .14em; font-size: clamp(42px, 8vw, 64px); margin: 8px 0 12px; }
+    h2 { letter-spacing: .14em; font-size: 22px; margin-bottom: 14px; }
+    .muted { color: var(--muted); }
+    .stage { perspective: 900px; display: flex; justify-content: center; }
+    .card3d { position: relative; transform-style: preserve-3d; animation: floaty 6s ease-in-out infinite; }
+    .avatar { width: 260px; height: 320px; object-fit: cover; object-position: top; border-radius: 24px; border: 1px solid var(--red); box-shadow: 0 30px 60px rgba(255,26,60,.28); }
+    .ring { position: absolute; inset: -28px; border: 1px solid rgba(255,26,60,.7); border-radius: 50%; animation: orbit 7s linear infinite; }
+    .log { margin-top: 16px; border: 1px solid var(--border); border-radius: 16px; background: #000; padding: 16px; font-family: ui-monospace, monospace; font-size: 14px; }
+    .log p { opacity: .25; animation: log-cycle 8s linear infinite; }
+    .log p:nth-child(2) { animation-delay: 2s; }
+    .log p:nth-child(3) { animation-delay: 4s; }
+    .log p:nth-child(4) { animation-delay: 6s; }
+    @keyframes floaty { 0%,100% { transform: rotateY(-24deg) rotateX(12deg) translateY(0); } 50% { transform: rotateY(18deg) rotateX(2deg) translateY(-16px); } }
+    @keyframes orbit { from { transform: rotateX(72deg) rotateZ(0deg); } to { transform: rotateX(72deg) rotateZ(360deg); } }
+    @keyframes log-cycle { 0%,12% { opacity:.25; color:#9b9b9b; } 18%,38% { opacity:1; color:#ff1a3c; } 48%,100% { opacity:.35; color:#f3f3f3; } }
+    section { padding: 34px 0; }
+    .cards, .flow { display: grid; gap: 14px; }
+    .box { background: rgba(16,16,16,.92); border: 1px solid var(--border); border-radius: 16px; padding: 20px; }
+    .box h3 { color: var(--red); margin-bottom: 8px; }
+    .flow article { transform: rotateX(8deg); box-shadow: 0 18px 40px rgba(0,0,0,.45); }
+    .num { font-family: Orbitron, sans-serif; color: var(--red); font-size: 12px; }
+    .badges, .social { display: flex; flex-wrap: wrap; gap: 8px; }
+    .badges img, .social img { height: 32px; }
+    .group { margin-top: 22px; }
+    .group h3 { color: var(--red); font-size: 12px; letter-spacing: .16em; text-transform: uppercase; margin-bottom: 10px; }
+    .contact { text-align: center; padding-bottom: 80px; }
+    .social { justify-content: center; margin-top: 18px; }
+    @media (min-width: 800px) {
+      .hero { grid-template-columns: 1fr 280px; }
+      .cards { grid-template-columns: 1fr 1fr; }
+      .flow { grid-template-columns: repeat(4, 1fr); }
+      .about { display: grid; grid-template-columns: 1.1fr .9fr; gap: 16px; }
+    }
+    @media (max-width: 700px) { nav { display: none; } .avatar { width: 200px; height: 250px; } }
+  </style>
+</head>
+<body>
+  <div class="gridbg"></div>
+  <header>
+    <div class="wrap bar">
+      <a class="mark" href="#top">SHADOW</a>
+      <nav>
+        <a href="#about">About</a>
+        <a href="#flow">Automation</a>
+        <a href="#stack">Stack</a>
+        <a href="#work">Work</a>
+        <a href="#contact">Contact</a>
+      </nav>
+    </div>
+  </header>
+  <main id="top" class="wrap">
+    <section class="hero">
+      <div>
+        <p class="kicker">Systems · Stores · Automation</p>
+        <h1>SHADOW</h1>
+        <p class="muted">Full Stack Developer and Digital Solutions Engineer. Large-scale systems, payment confirmation, and automation that keeps a business running after launch.</p>
+        <div class="social" style="justify-content:flex-start">
+          <a href="https://www.tiktok.com/@shadow1s10" target="_blank" rel="noreferrer"><img alt="TikTok" src="https://img.shields.io/badge/TikTok-000000?style=for-the-badge&logo=tiktok&logoColor=white" /></a>
+          <a href="https://www.instagram.com/shadow1s10" target="_blank" rel="noreferrer"><img alt="Instagram" src="https://img.shields.io/badge/Instagram-E4405F?style=for-the-badge&logo=instagram&logoColor=white" /></a>
+        </div>
+      </div>
+      <div class="stage">
+        <div class="card3d">
+          <div class="ring"></div>
+          <img class="avatar" src="https://i.postimg.cc/wTJt56z7/Chat-GPT-Image-30-mayw-2026-08-23-37-s.png" alt="SHADOW" />
+        </div>
+      </div>
+    </section>
+    <section id="about" class="about">
+      <div>
+        <h2>About</h2>
+        <p class="muted">I design complete digital ecosystems: backend, frontend, automation, APIs, hosting, and performance. From the first idea through deployment.</p>
+      </div>
+      <blockquote class="box">I don’t just build websites. I build systems, automation, and infrastructure that run businesses.</blockquote>
+    </section>
+    <section id="flow">
+      <h2>Automation</h2>
+      <p class="muted">The signal moves on its own. Nothing waits to be copied by hand.</p>
+      <div class="log">
+        <p>webhook received · order #1842</p>
+        <p>n8n route · payment gate</p>
+        <p>payment confirmed · status locked</p>
+        <p>store + mail updated · done</p>
+      </div>
+      <div class="flow" style="margin-top:18px">
+        <article class="box"><p class="num">01</p><h3>Trigger</h3><p class="muted">Form, order, or webhook hits the system.</p></article>
+        <article class="box"><p class="num">02</p><h3>Route</h3><p class="muted">n8n or a custom script decides the next step.</p></article>
+        <article class="box"><p class="num">03</p><h3>Confirm</h3><p class="muted">Payment status is checked and locked in.</p></article>
+        <article class="box"><p class="num">04</p><h3>Deliver</h3><p class="muted">Store, email, and the client update together.</p></article>
+      </div>
+    </section>
+    <section id="expertise">
+      <h2>Expertise</h2>
+      <div class="cards">
+        <article class="box"><h3>Web Development</h3><p class="muted">Frontend and backend, from the interface to the server.</p></article>
+        <article class="box"><h3>E-Commerce</h3><p class="muted">WooCommerce, Shopify, and custom stores.</p></article>
+        <article class="box"><h3>Automation</h3><p class="muted">n8n, Zapier, and scripts that remove repetitive work.</p></article>
+        <article class="box"><h3>API Integration</h3><p class="muted">Microservices, REST, and webhooks between platforms.</p></article>
+        <article class="box"><h3>Hosting</h3><p class="muted">Deployment, servers, and cloud architecture.</p></article>
+        <article class="box"><h3>Security</h3><p class="muted">Hardening and performance under real traffic.</p></article>
+      </div>
+    </section>
+    <section id="stack">
+      <h2>Stack</h2>
+      <div class="group"><h3>Frontend</h3><div class="badges">
+        <img alt="HTML5" src="https://img.shields.io/badge/HTML5-E34F26?style=for-the-badge&logo=html5&logoColor=white" />
+        <img alt="CSS3" src="https://img.shields.io/badge/CSS3-1572B6?style=for-the-badge&logo=css3&logoColor=white" />
+        <img alt="JavaScript" src="https://img.shields.io/badge/JavaScript-F7DF1E?style=for-the-badge&logo=javascript&logoColor=black" />
+        <img alt="TypeScript" src="https://img.shields.io/badge/TypeScript-3178C6?style=for-the-badge&logo=typescript&logoColor=white" />
+        <img alt="React" src="https://img.shields.io/badge/React-20232A?style=for-the-badge&logo=react&logoColor=61DAFB" />
+        <img alt="Next.js" src="https://img.shields.io/badge/Next.js-000000?style=for-the-badge&logo=next.js&logoColor=white" />
+      </div></div>
+      <div class="group"><h3>Backend</h3><div class="badges">
+        <img alt="PHP" src="https://img.shields.io/badge/PHP-777BB4?style=for-the-badge&logo=php&logoColor=white" />
+        <img alt="Python" src="https://img.shields.io/badge/Python-3776AB?style=for-the-badge&logo=python&logoColor=white" />
+        <img alt="Node.js" src="https://img.shields.io/badge/Node.js-339933?style=for-the-badge&logo=node.js&logoColor=white" />
+        <img alt="Express" src="https://img.shields.io/badge/Express-000000?style=for-the-badge&logo=express&logoColor=white" />
+      </div></div>
+      <div class="group"><h3>Platforms</h3><div class="badges">
+        <img alt="WordPress" src="https://img.shields.io/badge/WordPress-21759B?style=for-the-badge&logo=wordpress&logoColor=white" />
+        <img alt="WooCommerce" src="https://img.shields.io/badge/WooCommerce-96588A?style=for-the-badge&logo=woocommerce&logoColor=white" />
+        <img alt="Elementor" src="https://img.shields.io/badge/Elementor-92003B?style=for-the-badge&logo=elementor&logoColor=white" />
+        <img alt="Shopify" src="https://img.shields.io/badge/Shopify-96BF48?style=for-the-badge&logo=shopify&logoColor=white" />
+      </div></div>
+      <div class="group"><h3>Automation</h3><div class="badges">
+        <img alt="n8n" src="https://img.shields.io/badge/n8n-FF6D5A?style=for-the-badge" />
+        <img alt="Zapier" src="https://img.shields.io/badge/Zapier-FF4A00?style=for-the-badge&logo=zapier&logoColor=white" />
+        <img alt="REST API" src="https://img.shields.io/badge/REST%20API-02569B?style=for-the-badge" />
+        <img alt="Webhooks" src="https://img.shields.io/badge/Webhooks-1E1E1E?style=for-the-badge" />
+      </div></div>
+      <div class="group"><h3>Hosting & Cloud</h3><div class="badges">
+        <img alt="Cloudflare" src="https://img.shields.io/badge/Cloudflare-F38020?style=for-the-badge&logo=cloudflare&logoColor=white" />
+        <img alt="AWS" src="https://img.shields.io/badge/AWS-FF9900?style=for-the-badge&logo=amazonaws&logoColor=white" />
+        <img alt="Google Cloud" src="https://img.shields.io/badge/Google%20Cloud-4285F4?style=for-the-badge&logo=googlecloud&logoColor=white" />
+        <img alt="DigitalOcean" src="https://img.shields.io/badge/DigitalOcean-0080FF?style=for-the-badge&logo=digitalocean&logoColor=white" />
+        <img alt="Vercel" src="https://img.shields.io/badge/Vercel-000000?style=for-the-badge&logo=vercel&logoColor=white" />
+        <img alt="cPanel" src="https://img.shields.io/badge/cPanel-FF6C2C?style=for-the-badge&logo=cpanel&logoColor=white" />
+      </div></div>
+      <div class="group"><h3>Databases</h3><div class="badges">
+        <img alt="MySQL" src="https://img.shields.io/badge/MySQL-4479A1?style=for-the-badge&logo=mysql&logoColor=white" />
+        <img alt="MariaDB" src="https://img.shields.io/badge/MariaDB-003545?style=for-the-badge&logo=mariadb&logoColor=white" />
+        <img alt="PostgreSQL" src="https://img.shields.io/badge/PostgreSQL-316192?style=for-the-badge&logo=postgresql&logoColor=white" />
+        <img alt="MongoDB" src="https://img.shields.io/badge/MongoDB-4EA94B?style=for-the-badge&logo=mongodb&logoColor=white" />
+      </div></div>
+      <div class="group"><h3>Infrastructure</h3><div class="badges">
+        <img alt="Git" src="https://img.shields.io/badge/Git-F05032?style=for-the-badge&logo=git&logoColor=white" />
+        <img alt="Docker" src="https://img.shields.io/badge/Docker-2496ED?style=for-the-badge&logo=docker&logoColor=white" />
+        <img alt="Linux" src="https://img.shields.io/badge/Linux-FCC624?style=for-the-badge&logo=linux&logoColor=black" />
+      </div></div>
+    </section>
+    <section id="work">
+      <h2>Work</h2>
+      <div class="cards">
+        <div class="box muted">Temporary email platforms that receive and show mail instantly.</div>
+        <div class="box muted">Full stores: catalog, checkout, shipping, and admin.</div>
+        <div class="box muted">Payment confirmation that updates the order without manual work.</div>
+        <div class="box muted">Automation between forms, email, WhatsApp, and inventory.</div>
+      </div>
+    </section>
+    <section id="contact" class="contact">
+      <h2>Contact</h2>
+      <p class="muted">Open for freelance projects, collaborations, and system development.</p>
+      <div class="social">
+        <a href="https://www.tiktok.com/@shadow1s10" target="_blank" rel="noreferrer"><img alt="TikTok" src="https://img.shields.io/badge/TikTok-000000?style=for-the-badge&logo=tiktok&logoColor=white" /></a>
+        <a href="https://www.instagram.com/shadow1s10" target="_blank" rel="noreferrer"><img alt="Instagram" src="https://img.shields.io/badge/Instagram-E4405F?style=for-the-badge&logo=instagram&logoColor=white" /></a>
+      </div>
+    </section>
+  </main>
+</body>
+</html>
