@@ -176,8 +176,7 @@ function Home() {
 
           <div className="order-1 flex justify-center md:order-2" style={{ perspective: "1100px" }}>
             <div className="float-card relative">
-              <div className="orbit absolute -inset-10 rounded-full border border-primary/70" />
-              <div className="absolute -inset-16 rounded-full border border-primary/30" style={{ transform: "rotateX(72deg)" }} />
+              <div className="orbit absolute -inset-4 rounded-full border border-primary/70 md:-inset-10" />
               <img
                 src="/shadow.jpg"
                 alt="SHADOW"
@@ -202,7 +201,13 @@ function Home() {
 
         <section id="flow" className="mx-auto max-w-5xl px-5 py-12">
           <h2 className="font-display text-2xl tracking-widest">Automation</h2>
-          <p className="mt-3 max-w-xl text-sm text-muted">One pipeline. The order does not wait for someone to copy it by hand.</p>
+          <p className="mt-3 max-w-xl text-sm text-muted">The signal moves on its own. Nothing waits to be copied by hand.</p>
+          <div className="mt-6 rounded-card border border-border bg-black/60 p-4 font-mono text-sm">
+            <p className="log-line">webhook received · order #1842</p>
+            <p className="log-line">n8n route · payment gate</p>
+            <p className="log-line">payment confirmed · status locked</p>
+            <p className="log-line">store + mail updated · done</p>
+          </div>
           <div className="relative mt-8">
             <div className="absolute left-6 right-6 top-8 hidden h-0.5 bg-primary/40 md:block">
               <span className="packet absolute top-1/2 size-3.5 -translate-y-1/2 rounded-full bg-primary shadow-[0_0_18px_#ff1a3c]" />

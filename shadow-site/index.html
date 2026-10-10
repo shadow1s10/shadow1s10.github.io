@@ -8,7 +8,7 @@
   <style>
     :root { --bg:#050505; --surface:#101010; --fg:#f3f3f3; --muted:#9b9b9b; --red:#ff1a3c; --border:#2a1418; }
     * { box-sizing: border-box; margin: 0; padding: 0; }
-    body { background: var(--bg); color: var(--fg); font-family: Manrope, sans-serif; line-height: 1.65; }
+    body { background: var(--bg); color: var(--fg); font-family: Manrope, sans-serif; line-height: 1.65; overflow-x: hidden; }
     a { color: inherit; text-decoration: none; }
     .gridbg {
       position: fixed; inset: 0; pointer-events: none; opacity: .35;
@@ -30,9 +30,26 @@
     h2 { letter-spacing: .14em; font-size: 22px; margin-bottom: 14px; }
     .muted { color: var(--muted); }
     .stage { perspective: 900px; display: flex; justify-content: center; }
-    .card3d { position: relative; transform: rotateY(-18deg) rotateX(8deg); transform-style: preserve-3d; }
-    .avatar { width: 260px; height: 320px; object-fit: cover; object-position: top; border-radius: 24px; border: 1px solid var(--red); box-shadow: 0 30px 60px rgba(255,26,60,.28); }
-    .ring { position: absolute; inset: -22px; border: 1px solid rgba(255,26,60,.45); border-radius: 32px; transform: translateZ(-30px); }
+    .card3d { position: relative; transform-style: preserve-3d; animation: floaty 6s ease-in-out infinite; }
+    .ring { position: absolute; inset: -28px; border: 1px solid rgba(255,26,60,.7); border-radius: 50%; animation: orbit 7s linear infinite; }
+    .log { margin-top: 16px; border: 1px solid var(--border); border-radius: 16px; background: #000; padding: 16px; font-family: ui-monospace, monospace; font-size: 14px; }
+    .log p { opacity: .25; animation: log-cycle 8s linear infinite; }
+    .log p:nth-child(2) { animation-delay: 2s; }
+    .log p:nth-child(3) { animation-delay: 4s; }
+    .log p:nth-child(4) { animation-delay: 6s; }
+    @keyframes floaty {
+      0%, 100% { transform: rotateY(-24deg) rotateX(12deg) translateY(0); }
+      50% { transform: rotateY(18deg) rotateX(2deg) translateY(-16px); }
+    }
+    @keyframes orbit {
+      from { transform: rotateX(72deg) rotateZ(0deg); }
+      to { transform: rotateX(72deg) rotateZ(360deg); }
+    }
+    @keyframes log-cycle {
+      0%, 12% { opacity: .25; color: #9b9b9b; }
+      18%, 38% { opacity: 1; color: #ff1a3c; }
+      48%, 100% { opacity: .35; color: #f3f3f3; }
+    }
     section { padding: 34px 0; }
     .cards, .flow { display: grid; gap: 14px; }
     .box { background: rgba(16,16,16,.92); border: 1px solid var(--border); border-radius: 16px; padding: 20px; }
@@ -97,7 +114,13 @@
 
     <section id="flow">
       <h2>Automation</h2>
-      <p class="muted">One pipeline. The order does not wait for someone to copy it by hand.</p>
+      <p class="muted">The signal moves on its own. Nothing waits to be copied by hand.</p>
+      <div class="log">
+        <p>webhook received · order #1842</p>
+        <p>n8n route · payment gate</p>
+        <p>payment confirmed · status locked</p>
+        <p>store + mail updated · done</p>
+      </div>
       <div class="flow" style="margin-top:18px; perspective:1000px">
         <article class="box"><p class="num">01</p><h3>Trigger</h3><p class="muted">Form, order, or webhook hits the system.</p></article>
         <article class="box"><p class="num">02</p><h3>Route</h3><p class="muted">n8n or a custom script decides the next step.</p></article>
